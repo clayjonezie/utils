@@ -1,17 +1,22 @@
-import os
+#wraps du with proper defaults
 
-if argc < 2:
-   print("usage " + argv[0] + " [folder=.] [depth=1] [res=g]")
+import os, sys
+
+argc = len(sys.argv)
 
 folder = '.'
 depth = 1
 res = 'g'
 
 if argc >= 2:
-   folder = argv[1]
+   folder = sys.argv[1]
 
 if argc >= 3:
-   depth = int(argv[2])
+   depth = sys.argv[2]
 
 if argc >=4:
-   res = argv[3]
+   res = sys.argv[3]
+
+command = "du -d " + str(depth) + " -" + res + " " + folder
+
+os.system(command)
